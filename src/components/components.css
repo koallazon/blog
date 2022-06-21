@@ -4,6 +4,13 @@ h1 {
     margin: 0;
 }
 
+.navbar {
+    text-decoration: none;
+    color: brown;
+    display: flex;
+    justify-content: space-around;
+}
+
 .layout {
     display: flex;
     flex-direction: column;
