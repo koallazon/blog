@@ -1,4 +1,5 @@
 import React from "react"
+import { Link } from "react-router-dom"
 import Markdown from "react-markdown"
 import postList from "../posts.json"
 import "./components.css"
@@ -14,13 +15,15 @@ const postlist = () => {
         postList.map((post, i) => {
           return (
             <div key={i} className="post-card">
-              <h2>{post.title}</h2>
               <small>
                 Published on {post.date} by {post.author}
               </small>
               <hr />
               <Markdown children={excerptList[i]} rehypePlugins={[rehypeRaw]} />
-              <p>Read more...</p>
+              <small>
+                <Link className="links" to={`/post/${post.id}`}></Link>
+                Read more
+              </small>
             </div>
           )
         })}

@@ -4,8 +4,18 @@
     text-align: center;
 }
 
+.post {
+    width: 40%;
+    margin: auto
+}
+
 .page-content {
     width: 40%;
     margin: auto;
     text-align: center;
+}
+
+.notfound {
+    display: flex;
+    justify-content: center;
 }
