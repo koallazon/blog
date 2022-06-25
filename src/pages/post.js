@@ -1,5 +1,5 @@
 import React from "react"
-import { Navigate } from "react-router-dom"
+import { Navigate, useParams } from "react-router-dom"
 import Markdown from "react-markdown"
 import Layout from "../components/layout"
 import postlist from "../posts.json"
@@ -7,17 +7,20 @@ import rehypeRaw from "rehype-raw"
 import "./pages.css"
 
 const post = (props) => {
-  const validId = parseInt(props.match.params.id)
-  if (!validId) {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
+  let { id } = useParams()
+  if (!id) {
     return <Navigate to="/404"></Navigate>
   }
   const fetchedPost = {}
   let postExists = false
-  postlist.forEath((post, i) => {
-    if (validId === post.id) {
-      fetchedPost.title = post.title ? post.title : "No given ttile"
-      fetchedPost.author = post.author ? post.author : "No date author"
-      fetchedPost.content = post.content ? post.content : "No date content"
+  postlist.forEach((post) => {
+    if (id === post.id.toString()) {
+      console.log(post)
+      fetchedPost.title = post.title || "No given ttile"
+      fetchedPost.author = post.author || "No author"
+      fetchedPost.date = post.date || "No date"
+      fetchedPost.content = post.content || "No date content"
       postExists = true
     }
   })
@@ -30,7 +33,7 @@ const post = (props) => {
         <h2>{fetchedPost.title}</h2>
         <small>Published on {fetchedPost.date}</small>
         <hr />
-        <Markdown source={fetchedPost.content} rehypePlugins={[rehypeRaw]} />
+        <Markdown children={fetchedPost.content} rehypePlugins={[rehypeRaw]} />
       </div>
     </Layout>
   )

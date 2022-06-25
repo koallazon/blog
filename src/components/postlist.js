@@ -14,16 +14,27 @@ const postlist = () => {
       {postList.length &&
         postList.map((post, i) => {
           return (
-            <div key={i} className="post-card">
-              <small>
-                Published on {post.date} by {post.author}
-              </small>
-              <hr />
-              <Markdown children={excerptList[i]} rehypePlugins={[rehypeRaw]} />
-              <small>
-                <Link className="links" to={`/post/${post.id}`}></Link>
-                Read more
-              </small>
+            <div key={i}>
+              <h2>
+                <Link className="links" to={`./post/${post.id.toString()}`}>
+                  {post.title}
+                </Link>
+              </h2>
+              <div className="post-card">
+                <small>
+                  Published on {post.date} by {post.author}
+                </small>
+                <hr />
+                <Markdown
+                  children={excerptList[i]}
+                  rehypePlugins={[rehypeRaw]}
+                />
+                <small>
+                  <Link className="links" to={`./post/${post.id.toString()}`}>
+                    Read more
+                  </Link>
+                </small>
+              </div>
             </div>
           )
         })}
