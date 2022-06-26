@@ -1,5 +1,6 @@
 const path = require("path")
 const fs = require("fs")
+const { v4: uuidv4 } = require("uuid")
 
 const dirPath = path.join(__dirname, "../src/content")
 const dirPathPages = path.join(__dirname, "../src/pages/content")
@@ -43,10 +44,8 @@ const getPosts = () => {
         const metadataIndices = lines.reduce(getMetadataIndices, [])
         const metadata = parseMetadata({ lines, metadataIndices })
         const content = parseContent({ lines, metadataIndices })
-        const date = new Date(metadata.date)
-        const timestamp = date.getTime() / 1000
         post = {
-          id: timestamp,
+          id: uuidv4(),
           title: metadata.title ? metadata.title : "No title given",
           author: metadata.author ? metadata.author : "No author",
           date: metadata.date ? metadata.date : "No date given",
@@ -74,7 +73,6 @@ const getPages = () => {
     files.forEach((file, idx) => {
       let page
       fs.readFile(`${dirPathPages}/${file}`, "utf8", (err, contents) => {
-        console.log(contents)
         page = {
           contents,
         }
