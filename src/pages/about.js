@@ -4,8 +4,7 @@ import aboutText from "../pages.json"
 import rehypeRaw from "rehype-raw"
 import Layout from "../components/layout"
 
-const about = (props) => {
-  console.log(aboutText)
+const about = () => {
   return (
     <Layout>
       <h1 style={{ textAlign: "center", marginBottom: "40px" }}>

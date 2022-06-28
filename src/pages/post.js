@@ -16,7 +16,6 @@ const post = (props) => {
   let postExists = false
   postlist.forEach((post) => {
     if (id === post.id.toString()) {
-      console.log(post)
       fetchedPost.title = post.title || "No given ttile"
       fetchedPost.author = post.author || "No author"
       fetchedPost.date = post.date || "No date"
