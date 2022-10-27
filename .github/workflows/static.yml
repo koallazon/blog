@@ -43,7 +43,7 @@ jobs:
       - name: Build
         run: yarn build
       - name: nojekyll 생성
-        run: cd ./build && touck .nojekyll && cd ..
+        run: cd ./build && touch .nojekyll && cd ..
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v1
         with:
