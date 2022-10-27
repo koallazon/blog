@@ -2,7 +2,7 @@
   "name": "blog",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://koallazon.github.io/blog/",
+  "homepage": "./",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.1.1",
@@ -17,7 +17,7 @@
   },
   "scripts": {
     "predeplay": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages --add --dotfiles -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
